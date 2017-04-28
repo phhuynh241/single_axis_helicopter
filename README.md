@@ -1,5 +1,6 @@
 Single Axis Helicopter
 ---
+The goal of this project is to be able to drive a DC Motor with a propeller to control the angle of the lever by using a Pulse Width Modulation Signal. The Infrared Distance Sensor will measure the distance from the lever to the base and give us feedback, and we use this feedback and implement it in a Closed Loop Control System so that we can maintain the setpoint the user wants it at.
 
 AUTHOR
 ---
