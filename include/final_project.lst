@@ -1,0 +1,110 @@
+A51 MACRO ASSEMBLER  final_project                                                        12/16/2016 15:32:25 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\final_project.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE final_project.a51 SET(SMALL) DEBUG PRINT(.\Listings\final_project.lst) 
+                      OBJECT(.\Objects\final_project.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+                       2     
+0000 020030            3     LJMP INIT
+000B                   4     ORG 000BH
+000B 02005F            5     LJMP TO_ISR
+                       6     
+0030                   7     ORG 0030H
+                       8     
+0030                   9     INIT:
+0030 758901           10                     MOV TMOD, #01H
+0033 758C00           11                     MOV TH0, #0H
+0036 758A00           12                     MOV TL0, #0H
+0039 75A882           13                     MOV IE, #82H  
+003C D28C             14                     SETB TR0  
+003E C2D5             15                     CLR F0
+0040                  16     MAIN:
+0040 20B71A           17                     JB P3.7, BACKUP
+                      18                     
+0043 C3               19                     CLR C
+0044 E590             20                     MOV A, P1  
+0046 F4               21                     CPL A
+0047 FD               22                     MOV R5, A
+0048 8D80             23                     MOV P0, R5  
+004A 13               24                     RRC A  
+004B C3               25                     CLR C
+004C FB               26                     MOV R3, A  
+                      27                     
+004D E5A0             28                     MOV A, P2  
+004F 13               29                     RRC A  
+0050 C3               30                     CLR C
+0051 FF               31                     MOV R7, A  
+                      32                     
+0052 9B               33                     SUBB A, R3 
+0053 C3               34                     CLR C
+0054 FE               35                     MOV R6, A  
+                      36                     
+0055 247F             37                     ADD A, #127  
+0057 C3               38                     CLR C
+0058 F9               39                     MOV R1, A  
+                      40     
+0059 D2B6             41                     SETB P3.6
+005B D2B7             42                     SETB P3.7
+                      43                     
+005D                  44     BACKUP:         
+005D 80E1             45                     SJMP MAIN
+005F                  46     TO_ISR:
+005F C28C             47                     CLR TR0
+0061 20D514           48                     JB F0, LOW_P
+0064                  49     HIGH_P:  
+0064 74FF             50                     MOV A, #0FFH
+0066 D2B4             51                     SETB P3.4
+0068 D2D5             52                     SETB F0
+006A C3               53                     CLR C  
+006B 99               54                     SUBB A, R1  
+006C F58A             55                     MOV TL0, A
+006E 758CFF           56                     MOV TH0, #0FFH 
+0071 D28C             57                     SETB TR0
+A51 MACRO ASSEMBLER  FINAL_PROJECT                                                        12/16/2016 15:32:25 PAGE     2
+
+0073 C2B7             58                     CLR P3.7
+0075 C2B6             59                     CLR P3.6 
+0077 32               60                     RETI
+0078                  61     LOW_P:  
+0078 C2D5             62                     CLR F0  
+007A C2B4             63                     CLR P3.4
+007C 898A             64                     MOV TL0, R1  
+007E 758CFF           65                     MOV TH0, #0FFH 
+0081 D28C             66                     SETB TR0
+0083 32               67                     RETI
+                      68     END
+A51 MACRO ASSEMBLER  FINAL_PROJECT                                                        12/16/2016 15:32:25 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACKUP . . . . . .  C ADDR   005DH   A   
+F0 . . . . . . . .  B ADDR   00D0H.5 A   
+HIGH_P . . . . . .  C ADDR   0064H   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+INIT . . . . . . .  C ADDR   0030H   A   
+LOW_P. . . . . . .  C ADDR   0078H   A   
+MAIN . . . . . . .  C ADDR   0040H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TO_ISR . . . . . .  C ADDR   005FH   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
