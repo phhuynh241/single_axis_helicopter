@@ -10,11 +10,6 @@ CONTENTS
 ---
 Built a Single Axis Helicopter using the MDE 8051 Trainer (microcontroller) with a PID controller. The propeller on the DC motor changes based on user input from the switches on the microcontroller. It uses a variety of components such as timers, interrupts, and PWM signal.
 
-Picture(s)
----
-Board:
-Will insert later when I figure it out.
-
 User Guide
 ---
 Controls:
@@ -22,10 +17,6 @@ Controls:
 
 COMPONENTS
 ---
-Schematic:
-
-Will insert schematic when I figure it out
-
 1.	Microcontroller: 8051 MDE Trainer Board with the DS89C450 chip
 2.	Analog to Digital Converter ADC0804 - The ADC transfers the analog signal from the IR sensor to the microcontroller, and since the IR sensor outputs an analog voltage to the ADC, the ADC will output 0 to 255 and send it back to the 8051. This value will act as the process variable.
 3.	DC Motor - The DC motor is connected by a propeller, and the DC motor can take in a voltage ranging from 0V to 5V that is supplied by the microcontroller board. A Pulse Width Modulation signal and a MOSFET is used to change the speed of the motor.
@@ -38,4 +29,4 @@ Will insert schematic when I figure it out
 
 BUGS
 ---
-- Didn't implement the derivative portion of the PID controller, so does not adjust as accurately, will implement at a later date
+- Didn't implement the derivative portion of the PID controller, so does not adjust as accurately
